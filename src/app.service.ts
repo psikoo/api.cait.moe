@@ -47,11 +47,9 @@ function getMethods(path: string, router: Router): string[] {
   let methods: string[] = [];
   for(let i=0; i<router.stack.length; i++) {
     let route = router.stack[i].route;
-    if(route!.path === path) {
-      methods.push(route!.stack[0].method)
-    } else if(route!.path === path+"/:id") {
-      methods.push(route?.stack[0].method+"/:id")
-    }
+    if(!route) {}
+    else if(route.path === path) { methods.push(route.stack[0].method) } 
+    else if(route.path === path+"/:id") { methods.push(route?.stack[0].method+"/:id") }
   }
   return methods;
 }
