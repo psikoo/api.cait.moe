@@ -7,8 +7,8 @@ export class AppService {
   getRouts(): JSON {
     const server = app.getHttpServer();
     console.log(" > DEBUG")
+    console.log(JSON.stringify(app))
     console.log(JSON.stringify(server))
-    console.log(JSON.stringify(app._router))
     const router: Router = server._events.request._router;
     if(!server._events.request._router) return JSON.parse(JSON.stringify({"Error": "No routes"}));
     
