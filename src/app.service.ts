@@ -14,7 +14,7 @@ export class AppService {
     console.log(JSON.stringify(server._events.request))
     console.log(" > DEBUG")
     console.log(JSON.stringify(server._events.request._router))
-    if(!server._events.request._router) return JSON.parse("{'Error': 'no routes'}"); 
+    if(!server._events.request._router) return JSON.parse('{"Error":true'); 
     const router: Router = server._events.request._router;
     
     let availableRoutes: [{ path: string, methods: string[] }?] = [];
