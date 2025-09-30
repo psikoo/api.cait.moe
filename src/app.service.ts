@@ -9,7 +9,7 @@ export class AppService {
     console.log(" > DEBUG")
     console.log(app.getHttpServer()._events.request)
     console.log(" > DEBUG")
-    console.log(app.getHttpServer()._events.request.router())
+    console.log(app.getHttpServer()._events.request.router)
     //console.log(app.getHttpServer()._events.request._events.router)
     console.log(JSON.stringify(server))
     const router: Router = server._events.request._router;
