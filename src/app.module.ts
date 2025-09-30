@@ -5,7 +5,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { BasicPasswordMiddleware, LoggerMiddleware } from './middleware';
 import { DatabaseModule } from './database/database.module';
 import { TamagotchiModule } from './modules/cmd/tamagotchi/tamagotchi.module';
-import { ShortUrlModule } from './modules/url/short-url/short-url.module';
+import { ShortUrlModule } from './modules/url/shortUrl/shortUrl.module';
 
 @Module({
   imports: [ConfigModule.forRoot({ isGlobal: true }), DatabaseModule, 
