@@ -1,6 +1,6 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { CreateCameraDto } from './createCamera.dto';
-import { IsBoolean, IsString } from 'class-validator/types/decorator/decorators';
+import { IsString, IsBoolean } from 'class-validator';
 
 export class UpdateCameraDto extends PartialType(CreateCameraDto) {
     @IsString()
