@@ -4,9 +4,11 @@ import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { BasicPasswordMiddleware, LoggerMiddleware } from './middleware';
 import { DatabaseModule } from './database/database.module';
+import { TamagotchiModule } from './modules/cmd/tamagotchi/tamagotchi.module';
 
 @Module({
-  imports: [ConfigModule.forRoot({ isGlobal: true }), DatabaseModule
+  imports: [ConfigModule.forRoot({ isGlobal: true }), DatabaseModule, 
+            TamagotchiModule
 
   ],
   controllers: [AppController],
