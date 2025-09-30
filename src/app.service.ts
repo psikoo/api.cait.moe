@@ -14,7 +14,7 @@ export class AppService {
     let availableRoutes: [{ path: string, methods: string[] }?] = [];
     for(let i=0; i<router.stack.length; i++) {
       let route = router.stack[i].route;
-      if (route && isNotInList(route!.path, availableRoutes)) {
+      if (route && isNotInList(route!.path, availableRoutes) && route.path !== "/v1$" && route.path !== "/v1/*path") {
         console.log(JSON.stringify(route.path))
         availableRoutes.push({
           path: route!.path,
