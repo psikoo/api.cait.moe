@@ -14,7 +14,11 @@ export class AppService {
     let availableRoutes: [{ path: string, methods: string[] }?] = [];
     for(let i=0; i<router.stack.length; i++) {
       if (router.stack[i].route && isInList(router.stack[i].route!.path, availableRoutes)) {
-        console.log(JSON.stringify(router.stack[i]))
+        console.log(JSON.stringify(router.stack[i].route!.path))
+        availableRoutes.push({
+          path: router.stack[i].route!.path,
+          methods: ["A"]//getMethods(router.stack[i].route!.path , router),
+        })
       }
     }
     return JSON.parse(JSON.stringify({"Error": "Debug"}));
