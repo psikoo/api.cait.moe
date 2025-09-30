@@ -14,7 +14,7 @@ export class AppService {
     let availableRoutes: [{ path: string, methods: string[] }?] = [];
     for(let i=0; i<router.stack.length; i++) {
       let route = router.stack[i].route;
-      if (route && isNotInList(route!.path, availableRoutes) && route.path === "/v1") {
+      if (route && isNotInList(route!.path, availableRoutes)) {
         console.log(JSON.stringify(route.path))
         availableRoutes.push({
           path: route!.path,
@@ -23,15 +23,6 @@ export class AppService {
       }
     }
     return JSON.parse(JSON.stringify(availableRoutes));
-    
-    for(let i=0; i<router.stack.length; i++) {
-      if (router.stack[i].route && router.stack[i].route!.stack[0].method !== "acl" && isNotInList(router.stack[i].route!.path, availableRoutes)) {
-        availableRoutes.push({
-          path: router.stack[i].route!.path,
-          methods: getMethods(router.stack[i].route!.path , router),
-        })
-      }
-    }
   }
 }
 
