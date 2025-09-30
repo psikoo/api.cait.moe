@@ -11,12 +11,14 @@ export class AppService {
     if(!router) return JSON.parse(JSON.stringify({"Error": "No router"}));
 
     
+    let availableRoutes: [{ path: string, methods: string[] }?] = [];
     for(let i=0; i<router.stack.length; i++) {
-      console.log(JSON.stringify(router.stack[i]))
+      if (router.stack[i].route && isInList(router.stack[i].route!.path, availableRoutes)) {
+        console.log(JSON.stringify(router.stack[i]))
+      }
     }
     return JSON.parse(JSON.stringify({"Error": "Debug"}));
     
-    let availableRoutes: [{ path: string, methods: string[] }?] = [];
     for(let i=0; i<router.stack.length; i++) {
       if (router.stack[i].route && router.stack[i].route!.stack[0].method !== "acl" && isInList(router.stack[i].route!.path, availableRoutes)) {
         availableRoutes.push({
