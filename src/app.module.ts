@@ -6,11 +6,13 @@ import { BasicPasswordMiddleware, LoggerMiddleware } from './middleware';
 import { DatabaseModule } from './database/database.module';
 import { TamagotchiModule } from './modules/cmd/tamagotchi/tamagotchi.module';
 import { ShortUrlModule } from './modules/url/shortUrl/shortUrl.module';
+import { CamerasModule } from './modules/dgt/cameras/cameras.module';
+import { PhotosModule } from './modules/dgt/photos/photos.module';
 
 @Module({
   imports: [ConfigModule.forRoot({ isGlobal: true }), DatabaseModule, 
-            TamagotchiModule, ShortUrlModule
-
+            TamagotchiModule, ShortUrlModule, 
+            CamerasModule, PhotosModule
   ],
   controllers: [AppController],
   providers: [AppService],
