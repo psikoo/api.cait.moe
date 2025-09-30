@@ -5,7 +5,7 @@ import { Router } from 'express';
 @Injectable()
 export class AppService {
   getRouts(): JSON {
-    const server = app.getHttpAdapter().getInstance();
+    const server = app.getHttpServer();
     console.log(" > DEBUG")
     console.log(JSON.stringify(server))
     console.log(" > DEBUG")
