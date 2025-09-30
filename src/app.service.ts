@@ -14,12 +14,8 @@ export class AppService {
     console.log(JSON.stringify(server._events.request))
     console.log(" > DEBUG")
     console.log(JSON.stringify(server._events.request._router))
+    if(!server._events.request._router) return JSON.parse("Error, no routes"); 
     const router: Router = server._events.request._router;
-    console.log(" > DEBUG "+router.stack)
-    console.log(" > DEBUG "+router.stack.length)
-    console.log(" > DEBUG "+router.stack[0].route)
-    console.log(" > DEBUG "+router.stack[0].route!.path)
-    console.log(" > DEBUG "+getMethods(router.stack[0].route!.path , router))
     
     let availableRoutes: [{ path: string, methods: string[] }?] = [];
     for(let i=0; i<router.stack.length; i++) {
