@@ -6,10 +6,15 @@ import { Router } from 'express';
 export class AppService {
   getRouts(): JSON {
     const server = app.getHttpServer();
-    const router: Router = server._events.request._router;
+    const router: Router = server._events.request.router;
     console.log(JSON.stringify(router))
-    //console.log(app.getHttpServer()._events.request._events.router)
-    if(!server._events.request._router) return JSON.parse(JSON.stringify({"Error": "No routes"}));
+    if(!router) return JSON.parse(JSON.stringify({"Error": "No router"}));
+
+    
+    for(let i=0; i<router.stack.length; i++) {
+      console.log(JSON.stringify(router.stack[i]))
+    }
+    return JSON.parse(JSON.stringify({"Error": "Debug"}));
     
     let availableRoutes: [{ path: string, methods: string[] }?] = [];
     for(let i=0; i<router.stack.length; i++) {
