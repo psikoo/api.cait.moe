@@ -7,15 +7,11 @@ export class AppService {
   getRouts(): JSON {
     const server = app.getHttpServer();
     const router: Router = server._events.request.router;
-    console.log(JSON.stringify(router))
     if(!router) return JSON.parse(JSON.stringify({"Error": "No router"}));
-
-    
     let availableRoutes: [{ path: string, methods: string[] }?] = [];
     for(let i=0; i<router.stack.length; i++) {
       let route = router.stack[i].route;
       if (route && isNotInList(route!.path, availableRoutes) && route.path !== "/v1$" && route.path !== "/v1/*path") {
-        console.log(JSON.stringify(route.path))
         availableRoutes.push({
           path: route!.path,
           methods: getMethods(route.path , router),
