@@ -8,11 +8,12 @@ import { TamagotchiModule } from './modules/cmd/tamagotchi/tamagotchi.module';
 import { ShortUrlModule } from './modules/url/shortUrl/shortUrl.module';
 import { CamerasModule } from './modules/dgt/cameras/cameras.module';
 import { PhotosModule } from './modules/dgt/photos/photos.module';
+import { ApisModule } from './modules/www/apis/apis.module';
 
 @Module({
   imports: [ConfigModule.forRoot({ isGlobal: true }), DatabaseModule, 
             TamagotchiModule, ShortUrlModule, 
-            CamerasModule, PhotosModule
+            CamerasModule, PhotosModule, ApisModule
   ],
   controllers: [AppController],
   providers: [AppService],
