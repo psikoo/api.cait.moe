@@ -1,14 +1,14 @@
 import { Controller, Delete, Get } from '@nestjs/common';
 
 import { CounterService } from './counter.service';
-import { Counter } from './entities/counter.entity';
+import { Y2kCounter } from './entities/counter.entity';
 
 @Controller('y2k/counter')
 export class CounterController {
     constructor(private readonly counterService: CounterService) {};
 
     @Get()
-    getCounter(): Promise<Counter> {
+    getCounter(): Promise<Y2kCounter> {
         return this.counterService.getCounter();
     }
     @Delete()

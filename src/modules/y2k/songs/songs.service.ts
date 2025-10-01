@@ -1,23 +1,23 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Song } from './entities/song.entity';
+import { Y2KSong } from './entities/song.entity';
 import { CreateSongDto, UpdateSongDto } from './dto';
 
 @Injectable()
 export class SongsService {
-  constructor(@InjectRepository(Song) private readonly songRepository: Repository<Song>) {}
+  constructor(@InjectRepository(Y2KSong) private readonly songRepository: Repository<Y2KSong>) {}
 
-  async getSongs(): Promise<Song[]> {
+  async getSongs(): Promise<Y2KSong[]> {
     return await this.songRepository.find();
   }
-  async getSong(id: number): Promise<Song> {
-    const song: Song | null = await this.songRepository.findOneBy({id});
+  async getSong(id: number): Promise<Y2KSong> {
+    const song: Y2KSong | null = await this.songRepository.findOneBy({id});
     if(!song) throw new NotFoundException();
     else return song;
   }
-  async createSong(body: CreateSongDto): Promise<Song> {
-    const song: Song = await this.songRepository.create({
+  async createSong(body: CreateSongDto): Promise<Y2KSong> {
+    const song: Y2KSong = await this.songRepository.create({
       url: body.url,
       tag: body.tag,
       sfw: body.sfw,
@@ -26,8 +26,8 @@ export class SongsService {
     })
     return this.songRepository.save(song);
   }
-  async updateSong(id: number, body: UpdateSongDto): Promise<Song> {
-    const song: Song | undefined = await this.songRepository.preload({
+  async updateSong(id: number, body: UpdateSongDto): Promise<Y2KSong> {
+    const song: Y2KSong | undefined = await this.songRepository.preload({
       id,
       url: body.url,
       tag: body.tag,
@@ -40,7 +40,7 @@ export class SongsService {
     return song;
   }
   async deleteSong(id: number): Promise<JSON> {
-    const song: Song | null = await this.songRepository.findOneBy({id});
+    const song: Y2KSong | null = await this.songRepository.findOneBy({id});
     if(!song) throw new NotFoundException("Resource not found");
     else {
       this.songRepository.remove(song);

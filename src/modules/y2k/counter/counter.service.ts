@@ -1,16 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Counter } from './entities/counter.entity';
+import { Y2kCounter } from './entities/counter.entity';
 
 @Injectable()
 export class CounterService {
-  constructor(@InjectRepository(Counter) private readonly counterRepository: Repository<Counter>) {}
+  constructor(@InjectRepository(Y2kCounter) private readonly counterRepository: Repository<Y2kCounter>) {}
 
-  async getCounter(): Promise<Counter> {
-    const previousCounter: Counter | null = await this.counterRepository.findOneBy({id:0});
+  async getCounter(): Promise<Y2kCounter> {
+    const previousCounter: Y2kCounter | null = await this.counterRepository.findOneBy({id:0});
     const newCount = previousCounter!.counter+1;
-    const counter: Counter | undefined = await this.counterRepository.preload({
+    const counter: Y2kCounter | undefined = await this.counterRepository.preload({
       id: 0,
       counter: newCount,
     });
@@ -19,7 +19,7 @@ export class CounterService {
   }
 
   async deleteCounter(): Promise<JSON> {
-    const counter: Counter | undefined = await this.counterRepository.preload({
+    const counter: Y2kCounter | undefined = await this.counterRepository.preload({
       id: 0,
       counter: 0,
     });    

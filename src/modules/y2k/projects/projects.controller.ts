@@ -1,6 +1,6 @@
 import { Controller, Headers, Get, Param, Post, Body, Patch, Delete } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { Project } from './entities/project.entity';
+import { Y2KProject } from './entities/project.entity';
 import { ProjectsService } from './projects.service';
 import { CreateProjectDto, UpdateProjectDto } from './dto';
 
@@ -9,19 +9,19 @@ export class ProjectsController {
   constructor(private readonly configService: ConfigService, private readonly projectsService: ProjectsService) {};
 
   @Get()
-  getProjects(): Promise<Project[]> {
+  getProjects(): Promise<Y2KProject[]> {
     return this.projectsService.getProjects();
   }
   @Get(":id")
-  getProject(@Param("id") id: number): Promise<Project> {
+  getProject(@Param("id") id: number): Promise<Y2KProject> {
     return this.projectsService.getProject(id);
   }
   @Post()
-  createProject(@Headers('apiKey') apiKey: string, @Body() body: CreateProjectDto): Promise<Project> {
+  createProject(@Headers('apiKey') apiKey: string, @Body() body: CreateProjectDto): Promise<Y2KProject> {
     return this.projectsService.createProject(body);
   }
   @Patch(":id")
-  updateProject(@Headers('apiKey') apiKey: string, @Param("id") id: number, @Body() body: UpdateProjectDto): Promise<Project> {
+  updateProject(@Headers('apiKey') apiKey: string, @Param("id") id: number, @Body() body: UpdateProjectDto): Promise<Y2KProject> {
     return this.projectsService.updateProject(id, body);
   }
   @Delete(":id")

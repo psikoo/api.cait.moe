@@ -1,7 +1,6 @@
 import { Body, Controller, Delete, Get, Headers, Param, Patch, Post } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 import { UsersService } from './users.service';
-import { User } from './entities/user.entity';
+import { Y2KUser } from './entities/user.entity';
 import { CreateUserDto, UpdateUserDto } from './dto';
 
 @Controller('y2k/users')
@@ -9,19 +8,19 @@ export class UsersController {
   constructor(private readonly userService: UsersService) {};
 
   @Get()
-  getUsers(): Promise<User[]> {
+  getUsers(): Promise<Y2KUser[]> {
     return this.userService.getUsers();
   }
   @Get(":id")
-  getUser(@Param("id") id: number): Promise<User> {
+  getUser(@Param("id") id: number): Promise<Y2KUser> {
     return this.userService.getUser(id);
   }
   @Post()
-  createUser(@Headers('apiKey') apiKey: string, @Body() body: CreateUserDto): Promise<User> {
+  createUser(@Headers('apiKey') apiKey: string, @Body() body: CreateUserDto): Promise<Y2KUser> {
     return this.userService.createUser(body);
   }
   @Patch(":id")
-  updateUser(@Headers('apiKey') apiKey: string, @Param("id") id: number, @Body() body: UpdateUserDto): Promise<User> {
+  updateUser(@Headers('apiKey') apiKey: string, @Param("id") id: number, @Body() body: UpdateUserDto): Promise<Y2KUser> {
     return this.userService.updateUser(id, body);
   }
   @Delete(":id")
