@@ -20,7 +20,7 @@ import { UsersModule } from './modules/y2k/users/users.module';
     ConfigModule.forRoot({ isGlobal: true }), DatabaseModule,             // Config
     TamagotchiModule, ShortUrlModule, ApisModule,                         // Other
     CamerasModule, PhotosModule,                                          // DGT
-    CounterModule, ProjectsModule, SongsModule, UrlsModule, UsersModule   // Y2K
+    CounterModule, ProjectsModule, SongsModule, UrlsModule, UsersModule   // Y2k
   ],
   controllers: [AppController],
   providers: [AppService],
