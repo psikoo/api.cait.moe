@@ -9,11 +9,16 @@ import { ShortUrlModule } from './modules/url/shortUrl/shortUrl.module';
 import { CamerasModule } from './modules/dgt/cameras/cameras.module';
 import { PhotosModule } from './modules/dgt/photos/photos.module';
 import { ApisModule } from './modules/www/apis/apis.module';
+import { CounterModule } from './modules/y2k/counter/counter.module';
+import { ProjectsModule } from './modules/y2k/projects/projects.module';
+import { SongsModule } from './modules/y2k/songs/songs.module';
+import { UrlsModule } from './modules/y2k/urls/urls.module';
+import { UsersModule } from './modules/y2k/users/users.module';
 
 @Module({
   imports: [ConfigModule.forRoot({ isGlobal: true }), DatabaseModule, 
             TamagotchiModule, ShortUrlModule, 
-            CamerasModule, PhotosModule, ApisModule
+            CamerasModule, PhotosModule, ApisModule, CounterModule, ProjectsModule, SongsModule, UrlsModule, UsersModule
   ],
   controllers: [AppController],
   providers: [AppService],
