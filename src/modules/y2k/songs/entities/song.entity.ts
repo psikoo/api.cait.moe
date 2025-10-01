@@ -1,7 +1,7 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class Song {
+export class Y2KSong {
   @PrimaryGeneratedColumn("increment")
   id: number;
   @Column({nullable:false})
