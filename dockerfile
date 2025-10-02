@@ -8,4 +8,4 @@ RUN npm run build
 EXPOSE 3000
 CMD ["npm", "run", "start:prod"]
 # To build docker image run:
-# sudo docker build -t nest-caitmoe .
+# sudo docker build -t api-nest .

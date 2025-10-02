@@ -1,7 +1,7 @@
 services:
-  nest-caitmoe:
-    container_name: nest-caitmoe
-    image: nest-caitmoe:1
+  api-nest:
+    container_name: api-nest
+    image: api-nest:1
     restart: always
     ports:
       - "8443:3000"
