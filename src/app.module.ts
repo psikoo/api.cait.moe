@@ -14,11 +14,12 @@ import { ProjectsModule } from './modules/y2k/projects/projects.module';
 import { SongsModule } from './modules/y2k/songs/songs.module';
 import { UrlsModule } from './modules/y2k/urls/urls.module';
 import { UsersModule } from './modules/y2k/users/users.module';
+import { DiscordModule } from './modules/drive/discord/discord.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }), DatabaseModule,             // Config
-    TamagotchiModule, ShortUrlModule, ApisModule,                         // Other
+    TamagotchiModule, ShortUrlModule, ApisModule, DiscordModule,          // Other
     CamerasModule, PhotosModule,                                          // DGT
     CounterModule, ProjectsModule, SongsModule, UrlsModule, UsersModule   // Y2k
   ],
