@@ -4,12 +4,12 @@ import { Discord } from './dto';
 
 @Injectable()
 export class DiscordService {
-  async getUrl(body: Discord): Promise<JSON> {
+  async getUrl(query: Discord): Promise<JSON> {
     let finalResponse = "empty";
     let config = {
       method: "get",
-      url: "https://discord.com"+body.path,
-      headers: { "Content-Type": "application/json", "Authorization": "Bot "+body.token }
+      url: "https://discord.com"+query.path,
+      headers: { "Content-Type": "application/json", "Authorization": "Bot "+query.token }
     };
     await axios.request(config) 
     .then((response) => { finalResponse = response.data; })

@@ -1,13 +1,13 @@
-import { Controller, Get, Body } from '@nestjs/common';
+import { Controller, Get, Body, Query } from '@nestjs/common';
 import { DiscordService } from './discord.service';
 import { Discord } from './dto';
 
 @Controller('drive/discord')
 export class DiscordController {
-  constructor(private readonly userService: DiscordService) {};
+  constructor(private readonly discordService: DiscordService) {};
 
   @Get()
-  getUrl(@Body() body: Discord): Promise<JSON> {
-    return this.userService.getUrl(body);
+  getUrl(@Query() query: Discord): Promise<JSON> {
+    return this.discordService.getUrl(query);
   }
 }
