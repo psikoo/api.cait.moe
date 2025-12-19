@@ -19,9 +19,11 @@ export class DiscordService {
 
   async postUrl(query: Discord, file: any): Promise<JSON> {
     let finalResponse = "empty";
-    const blob = new Blob([file.buffer]);
     const form = new FormData();
-    form.append("file", blob, file.originalname || "file");
+    const fileBlob = new Blob([file.buffer]);
+    form.append("file", fileBlob, file.originalname || "file");
+    const payload = JSON.stringify({ content: "File", attachments: [{ id: 0, description: "Uploaded via api" }] });
+    form.append("payload_json", payload);
     let config = {
       method: "post",
       url: "https://discord.com"+query.path,
