@@ -14,7 +14,9 @@ export class DiscordController {
 
   @Post()
   @UseInterceptors(FileInterceptor('file'))
-  postUrl(@Query() query: Discord, @UploadedFile() file: any): Promise<JSON> {
+  postUrl(@Query() query: Discord, @Body() body: any, @UploadedFile() file: any): Promise<JSON> {
+    console.log(body)
+    console.log(file)
     return this.discordService.postUrl(query, file);
   }
 }
