@@ -20,7 +20,7 @@ export class DiscordService {
   async postUrl(query: Discord, file: any): Promise<JSON> {
     let finalResponse = "empty";
     const form = new FormData();
-    form.append("file", file, "file");
+    form.append("file", file.buffer, "file");
     let config = {
       method: "post",
       url: "https://discord.com"+query.path,
