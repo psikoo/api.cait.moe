@@ -16,4 +16,19 @@ export class DiscordService {
     .catch((error) => { finalResponse = error; });
     return JSON.parse(JSON.stringify(finalResponse));
   }
+
+  async postUrl(query: Discord, file: any): Promise<JSON> {
+    let finalResponse = "empty";
+    const form = new FormData();
+    form.append("file", file, "file");
+    let config = {
+      method: "post",
+      url: "https://discord.com"+query.path,
+      headers: { "Content-Type": "application/json", "Authorization": "Bot "+query.token }
+    };
+    await axios.request(config) 
+    .then((response) => { finalResponse = response.data; })
+    .catch((error) => { finalResponse = error; });
+    return JSON.parse(JSON.stringify(finalResponse));
+  }
 }

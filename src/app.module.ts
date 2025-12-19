@@ -34,7 +34,9 @@ export class AppModule implements NestModule {
   // Middleware
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(LoggerMiddleware, BasicPasswordMiddleware)
-      .exclude({ path: "favicon.ico", method: RequestMethod.GET })
+      .exclude(
+        { path: "favicon.ico", method: RequestMethod.GET }, 
+        { path: "v1/drive/discord", method: RequestMethod.POST })
       .forRoutes({ path:"*path", method:RequestMethod.ALL});
   }
 }
