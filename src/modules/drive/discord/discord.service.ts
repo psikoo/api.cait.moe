@@ -25,7 +25,7 @@ export class DiscordService {
     let config = {
       method: "post",
       url: "https://discord.com"+query.path,
-      headers: { "Content-Type": "application/json", "Authorization": "Bot "+query.token }
+      headers: { "Authorization": "Bot "+query.token }
     };
     await axios.request(config) 
     .then((response) => { finalResponse = response.data; })
