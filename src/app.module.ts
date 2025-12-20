@@ -34,7 +34,7 @@ export class AppModule implements NestModule {
   // Middleware
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(LoggerMiddleware, BasicPasswordMiddleware)
-      .exclude({ path: "*path", method: RequestMethod.ALL })
+      .exclude({ path: "v1/drive/discord", method: RequestMethod.ALL })
       .forRoutes({ path:"*path", method:RequestMethod.ALL});
   }
 }
