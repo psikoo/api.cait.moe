@@ -22,7 +22,7 @@ export class DiscordService {
     let finalResponse = "empty";
     let config = {
       method: "get",
-      url: "https://cdn.discord.com"+Buffer.from(query.path, 'base64').toString('utf8'),
+      url: "https://cdn.discordapp.com"+Buffer.from(query.path, 'base64').toString('utf8'),
     };
     await axios.request(config) 
     .then((response) => { finalResponse = response.data; })
