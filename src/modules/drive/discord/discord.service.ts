@@ -18,7 +18,7 @@ export class DiscordService {
     return JSON.parse(JSON.stringify(finalResponse));
   }
 
-  async getCdn(path: string) {
+  async getCdn(path: any) {
     const decodedPath = Buffer.from(path, "base64").toString("utf8");
     const url = `https://cdn.discordapp.com${decodedPath}`;
     const config: AxiosRequestConfig = {

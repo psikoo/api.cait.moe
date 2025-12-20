@@ -12,7 +12,7 @@ export class DiscordController {
     return this.discordService.getUrl(query);
   }
   @Get("/cdn")
-  getCnd(@Query() path: string) {
+  getCnd(@Query() path: any) {
     return this.discordService.getCdn(path);
   }
 
