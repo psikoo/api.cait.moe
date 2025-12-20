@@ -28,4 +28,17 @@ export class DiscordService {
     .catch((error) => { finalResponse = error; });
     return JSON.parse(JSON.stringify(finalResponse));
   }
+
+  async deleteUrl(query: Discord): Promise<JSON> {
+    let finalResponse = "empty";
+    let config = {
+      method: "delete",
+      url: "https://discord.com"+query.path,
+      headers: { "Authorization": "Bot "+query.token }
+    };
+    await axios.request(config) 
+    .then((response) => { finalResponse = response.data; })
+    .catch((error) => { finalResponse = error; });
+    return JSON.parse(JSON.stringify(finalResponse));
+  }
 }

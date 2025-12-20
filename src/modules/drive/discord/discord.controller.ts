@@ -1,4 +1,4 @@
-import { Controller, Get, Body, Query, Post, UseInterceptors, UploadedFile } from '@nestjs/common';
+import { Controller, Get, Body, Query, Post, UseInterceptors, UploadedFile, Delete } from '@nestjs/common';
 import { DiscordService } from './discord.service';
 import { Discord } from './dto';
 import { FileInterceptor } from '@nestjs/platform-express';
@@ -16,5 +16,11 @@ export class DiscordController {
   @UseInterceptors(FileInterceptor('file'))
   postUrl(@Query() query: Discord, @UploadedFile() file: any): Promise<JSON> {
     return this.discordService.postUrl(query, file);
+  }
+
+  @Delete()
+  @UseInterceptors(FileInterceptor('file'))
+  deleteUrl(@Query() query: Discord): Promise<JSON> {
+    return this.discordService.deleteUrl(query);
   }
 }
