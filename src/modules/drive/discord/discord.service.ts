@@ -1,5 +1,5 @@
 import { Injectable, StreamableFile } from '@nestjs/common';
-import axios, { AxiosRequestConfig } from 'axios';
+import axios from 'axios';
 import FormData from 'form-data';
 import { Discord } from './dto';
 
@@ -28,7 +28,6 @@ export class DiscordService {
     });
     return new StreamableFile(response.data);
   }
-
 
   async postUrl(query: Discord, file: any): Promise<JSON> {
     let finalResponse = "empty";
