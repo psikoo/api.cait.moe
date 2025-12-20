@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import axios from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 import FormData from 'form-data';
 import { Discord } from './dto';
 
@@ -18,16 +18,16 @@ export class DiscordService {
     return JSON.parse(JSON.stringify(finalResponse));
   }
 
-  async getCdn(query: any): Promise<JSON> {
-    let finalResponse = "empty";
-    let config = {
+  async getCdn(query: any) {
+    const discordUrl = "https://cdn.discordapp.com" + Buffer.from(query.path, 'base64').toString('utf8');
+    let config: AxiosRequestConfig = {
       method: "get",
-      url: "https://cdn.discordapp.com"+Buffer.from(query.path, 'base64').toString('utf8'),
+      url: discordUrl,
+      responseType: "arraybuffer"
     };
     await axios.request(config) 
-    .then((response) => { finalResponse = response.data; })
-    .catch((error) => { finalResponse = error; });
-    return JSON.parse(JSON.stringify(finalResponse));
+    .then((response) => { return response.data; })
+    .catch((error) => { return error; });
   }
 
 

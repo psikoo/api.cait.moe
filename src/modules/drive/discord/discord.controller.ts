@@ -12,7 +12,7 @@ export class DiscordController {
     return this.discordService.getUrl(query);
   }
   @Get("/cdn")
-  getCnd(@Query() query: any): Promise<JSON> {
+  getCnd(@Query() query: any) {
     return this.discordService.getCdn(query);
   }
 
