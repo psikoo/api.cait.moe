@@ -18,12 +18,13 @@ export class DiscordService {
     return JSON.parse(JSON.stringify(finalResponse));
   }
 
-  async getCdn(query: any) {
-    const discordUrl = "https://cdn.discordapp.com" + Buffer.from(query.path, 'base64').toString('utf8');
-    let config: AxiosRequestConfig = {
+  async getCdn(path: string) {
+    const decodedPath = Buffer.from(path, "base64").toString("utf8");
+    const url = `https://cdn.discordapp.com${decodedPath}`;
+    const config: AxiosRequestConfig = {
       method: "get",
-      url: discordUrl,
-      responseType: "arraybuffer"
+      url: url,
+      responseType: "stream",
     };
     await axios.request(config) 
     .then((response) => { return response.data; })

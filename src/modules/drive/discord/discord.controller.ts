@@ -12,8 +12,8 @@ export class DiscordController {
     return this.discordService.getUrl(query);
   }
   @Get("/cdn")
-  getCnd(@Query() query: any) {
-    return this.discordService.getCdn(query);
+  getCnd(@Query() path: string) {
+    return this.discordService.getCdn(path);
   }
 
   @Post()
