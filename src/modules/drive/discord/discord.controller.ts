@@ -11,6 +11,10 @@ export class DiscordController {
   getUrl(@Query() query: Discord): Promise<JSON> {
     return this.discordService.getUrl(query);
   }
+  @Get("/cdn")
+  getCnd(@Query() query: any): Promise<JSON> {
+    return this.discordService.getCdn(query);
+  }
 
   @Post()
   @UseInterceptors(FileInterceptor('file'))

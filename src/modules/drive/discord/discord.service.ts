@@ -18,6 +18,19 @@ export class DiscordService {
     return JSON.parse(JSON.stringify(finalResponse));
   }
 
+  async getCdn(query: any): Promise<JSON> {
+    let finalResponse = "empty";
+    let config = {
+      method: "get",
+      url: "https://cdn.discord.com"+decodeURI(query.path),
+    };
+    await axios.request(config) 
+    .then((response) => { finalResponse = response.data; })
+    .catch((error) => { finalResponse = error; });
+    return JSON.parse(JSON.stringify(finalResponse));
+  }
+
+
   async postUrl(query: Discord, file: any): Promise<JSON> {
     let finalResponse = "empty";
     const form = new FormData();
