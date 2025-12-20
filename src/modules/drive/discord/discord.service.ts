@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, StreamableFile } from '@nestjs/common';
 import axios, { AxiosRequestConfig } from 'axios';
 import FormData from 'form-data';
 import { Discord } from './dto';
@@ -18,17 +18,15 @@ export class DiscordService {
     return JSON.parse(JSON.stringify(finalResponse));
   }
 
-  async getCdn(path: any) {
-    const decodedPath = Buffer.from(path, "base64").toString("utf8");
+  async getCdn(query: any) {
+    const decodedPath = Buffer.from(query.path, 'base64').toString('utf8');
     const url = `https://cdn.discordapp.com${decodedPath}`;
-    const config: AxiosRequestConfig = {
-      method: "get",
+    const response = await axios({
+      method: 'get',
       url: url,
-      responseType: "stream",
-    };
-    await axios.request(config) 
-    .then((response) => { return response.data; })
-    .catch((error) => { return error; });
+      responseType: 'stream',
+    });
+    return new StreamableFile(response.data);
   }
 
 
