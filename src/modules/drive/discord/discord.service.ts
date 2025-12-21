@@ -7,9 +7,12 @@ import { Discord } from './dto';
 export class DiscordService {
   async getUrl(query: Discord): Promise<JSON> {
     let finalResponse = "empty";
+    let url ="https://discord.com"+query.path;
+    if(query.limit) url += `&limit=${query.limit}`;
+    if(query.before) url += `&before=${query.before}`;
     let config = {
       method: "get",
-      url: "https://discord.com"+query.path,
+      url: url,
       headers: { "Content-Type": "application/json", "Authorization": "Bot "+query.token }
     };
     await axios.request(config) 
