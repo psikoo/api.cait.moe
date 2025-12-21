@@ -7,7 +7,7 @@ import { Discord } from './dto';
 export class DiscordService {
   async getUrl(query: Discord): Promise<JSON> {
     let finalResponse = "empty";
-    let url ="https://discord.com"+query.path;
+    let url ="https://discord.com"+query.path+"?cait=true";
     if(query.limit) url += `&limit=${query.limit}`;
     if(query.before) url += `&before=${query.before}`;
     let config = {
