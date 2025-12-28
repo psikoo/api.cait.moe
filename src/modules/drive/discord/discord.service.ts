@@ -44,14 +44,14 @@ export class DiscordService {
   }
 
   async deleteUrl(query: Discord): Promise<JSON> {
-    let finalResponse = "empty";
+    let finalResponse: any = "empty";
     let config = {
       method: "delete",
       url: "https://discord.com"+query.path,
       headers: { "Authorization": "Bot "+query.token }
     };
     await axios.request(config) 
-    .then((response) => { finalResponse = response.data; })
+    .then((response) => { finalResponse = response; })
     .catch((error) => { finalResponse = error; });
     return JSON.parse(JSON.stringify(finalResponse));
   }
